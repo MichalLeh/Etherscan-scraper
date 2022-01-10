@@ -143,10 +143,24 @@ def getBasicData(ethWalletAdress, pagesTotal):
 
     return df
 
+def getPagesTotal(ethWalletAdress):
+    url = Request('https://etherscan.io/txs?a=' + ethWalletAdress, headers={'User-Agent': 'Mozilla/5.0'})
+    webpage = urlopen(url)
+    html = webpage.read().decode("utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+
+    pages = soup.find_all("strong", {"class":"font-weight-medium"})
+    pageList = []
+
+    for page in pages:
+        pageList.append(int(page.text))
+    # return max number + 1 for
+    return max(pageList) + 1
+
 # your eth wallet address
 ethWalletAdress = "your eth wallet address"
-#
-pagesTotal = 5 + 1
+# maximum number of available pages (consisting of transaction records)
+pagesTotal = getPagesTotal(ethWalletAdress)
 #  get general etherscan transactions data
 dfGeneral = getBasicData(ethWalletAdress, pagesTotal)
 # get more detailed transaction data
