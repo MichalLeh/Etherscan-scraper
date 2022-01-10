@@ -5,7 +5,6 @@ import requests
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from urllib.parse import urljoin
 
 # Get address 'to' for given transaction
 def getToAddress(soup):
@@ -145,7 +144,7 @@ def getBasicData(ethWalletAdress, pagesTotal):
     return df
 
 # your eth wallet address
-ethWalletAdress = "0x4797fa71e7756a5f2d2badcc76adc2d542e2a33a"
+ethWalletAdress = "your eth wallet address"
 #
 pagesTotal = 5 + 1
 #  get general etherscan transactions data
