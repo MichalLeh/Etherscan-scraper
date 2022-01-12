@@ -1,2 +1,2 @@
 # Etherscan-scraper
-Scraping the etherscan webpage for transaction data
+Scraping the etherscan.io for transaction data on ethereum network.
